@@ -2,257 +2,435 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Happy Birthday 💖</title>
-  <link rel="stylesheet" href="style.css"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday <span id="nameTop">Siru</span> 🌙</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <!-- floating hearts -->
+  <div id="hearts" aria-hidden="true"></div>
 
-<!-- INTRO OVERLAY -->
-<div class="intro active" id="step0">
-  <div class="intro-card">
-    <p class="intro-badge">🎁 A birthday surprise</p>
-    <h1 class="intro-title">Hey <span class="gradient-text" id="nameTop">mero Siru</span> 💖</h1>
-    <p class="intro-text" id="timeLine"></p>
+  <!-- background music -->
+  <audio id="bgMusic" src="music/happy-birthday.mp3" preload="auto"></audio>
 
-    <p class="intro-text">
-      Happy Birthday <b>bebu</b> 🎂 <br/>
-      I made something for you… <br/>
-      Promise you’ll go slowly? 😌
-    </p>
+  <!-- ============ SCREEN: WISH FIRST ============ -->
+  <section class="screen active" id="sWishFirst">
+    <div class="card hero">
+      <div class="badge">🌙 Under the same moon</div>
+      <h1 class="h1">Happy Birthday <span id="nameTop">Siru</span> 🎂</h1>
+      <p class="lead typed" id="wishFirstTyped"></p>
 
-    <button class="primary big" id="promiseBtn">I promise 💗</button>
-    <p class="intro-small">(No rushing… take your time.)</p>
-  </div>
-</div>
+      <button class="btn primary wide" id="wishFirstNext">Okay… I’m listening 😌 →</button>
+      <p class="small muted">Tip: go slowly baby 🤍</p>
+    </div>
+  </section>
 
-<!-- MAIN -->
-<div id="mainContent" class="main-hidden">
-  <div class="bg-blobs"></div>
-  <div class="hearts-layer" id="heartsLayer"></div>
+  <!-- ============ SCREEN: WANNA SEE SURPRISE ============ -->
+  <section class="screen" id="sWanna">
+    <div class="card hero">
+      <div class="badge">🎁 Surprise time</div>
+      <h2 class="h2">Wanna see the surprises on your birthday?</h2>
+      <p class="muted">It’s your special day 😌</p>
 
-  <header class="nav">
-    <div class="brand">For <span class="gradient-text" id="nameBrand">Siru</span> ✨</div>
-  </header>
-
-  <main class="container">
-
-    <!-- LOADING -->
-    <section class="panel" id="stepLoading">
-      <div class="card">
-        <h2 class="title">Preparing your surprise…</h2>
-        <p class="muted">Just a second 😌</p>
-
-        <div class="loading">
-          <div class="loading-bar" id="loadingBar"></div>
-        </div>
-        <p class="small muted" id="loadingText">Loading…</p>
+      <div class="chooseGrid">
+        <button class="btn primary" id="wannaYes">Yes baby 😌</button>
+        <button class="btn danger soft" id="wannaNo">No 😤</button>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- SECRET GATE -->
-    <section class="panel" id="stepGate">
-      <div class="card">
-        <h2 class="title">Only my <span class="gradient-text" id="nameGate">Siru</span> knows this 🔒</h2>
-        <p class="muted">Answer to unlock:</p>
+  <!-- ============ SCREEN: NOPE 1 ============ -->
+  <section class="screen" id="sNope1">
+    <div class="card hero">
+      <div class="badge">😤 Huh??</div>
+      <h2 class="h2">No? why?</h2>
+      <p class="lead">
+        Are you upset baby? 😶<br/>
+        Don’t be like that… I made this with love 😌💗<br/>
+        And it’s your birthday today 🎂
+      </p>
 
-        <div class="gate-box">
-          <label class="label" for="secretInput">What do I call you when I miss you the most?</label>
-          <input class="input" id="secretInput" placeholder="type here…" />
-          <button class="primary big" id="unlockBtn">Unlock 🔓</button>
+      <div class="chooseGrid">
+        <button class="btn ghost" id="nopeBack1">Okay fine… show me 😶</button>
+        <button class="btn danger soft" id="nopeMore">Still no 🙄</button>
+      </div>
 
-          <p class="small" id="gateMsg"></p>
-          <p class="small muted">Hint: it’s a nickname (example: bebu)</p>
+      <p class="small muted">(Be honest 😭)</p>
+    </div>
+  </section>
+
+  <!-- ============ SCREEN: NOPE 2 ============ -->
+  <section class="screen" id="sNope2">
+    <div class="card hero">
+      <div class="badge">😤 Listen Miss</div>
+      <h2 class="h2">I’m not accepting “no” today 😌</h2>
+      <p class="lead">
+        It’s your birthday baby…<br/>
+        If you don’t open this surprise,<br/>
+        I’ll come to Nepal and show you myself 😤💖
+      </p>
+
+      <button class="btn primary wide" id="nopeBack2">Okay okay… show me 🙈</button>
+      <p class="hint">(Good girl 😌)</p>
+    </div>
+  </section>
+
+  <!-- ============ SCREEN: MOOD ============ -->
+  <section class="screen" id="sMood">
+    <div class="card hero">
+      <div class="badge">💭 Mood check</div>
+      <h2 class="h2">How’s the birthday girl feeling right now? 🎂</h2>
+
+      <div class="grid3">
+        <button class="btn ghost" id="mHappy">Happy 😊</button>
+        <button class="btn ghost" id="mTired">Tired 😴</button>
+        <button class="btn ghost" id="mAnnoyed">Annoyed 😤</button>
+      </div>
+
+      <p class="lead" id="moodReply"></p>
+
+      <button class="btn primary wide" id="moodNext" disabled>Okay… continue 🤍 →</button>
+    </div>
+  </section>
+
+  <!-- ============ SCREEN: TRUST ============ -->
+  <section class="screen" id="sTrust">
+    <div class="card hero">
+      <div class="badge">🤝 One question</div>
+      <h2 class="h2">Do you trust me?</h2>
+
+      <div class="chooseGrid">
+        <button class="btn ghost" id="tYes">Yes, I trust you 💖</button>
+        <button class="btn ghost" id="tDepends">Hmm… depends 😏</button>
+      </div>
+
+      <p class="lead" id="trustMsg"></p>
+      <button class="btn primary wide" id="trustNext" disabled>Okay… next 😌 →</button>
+    </div>
+  </section>
+
+  <!-- ============ SCREEN: PROMISE ============ -->
+  <section class="screen" id="sPromise">
+    <div class="card hero">
+      <div class="badge">🤍 Promise</div>
+      <h2 class="h2">One condition before we start…</h2>
+      <p class="muted">Since it’s your birthday 😌</p>
+
+      <p class="lead">Promise me you’ll go slowly and feel everything?</p>
+
+      <div class="chooseGrid">
+        <button class="btn ghost" id="pYes">I promise 🤍</button>
+        <button class="btn ghost" id="pNo">No conditions 😤</button>
+      </div>
+
+      <p class="lead" id="promiseMsg"></p>
+      <button class="btn primary wide" id="promiseNext" disabled>Continue 🎁 →</button>
+    </div>
+  </section>
+
+  <!-- ============ SCREEN: LOADING ============ -->
+  <section class="screen" id="sLoad">
+    <div class="card hero">
+      <div class="badge">✨ Preparing</div>
+      <h2 class="h2">Preparing your birthday surprise…</h2>
+
+      <div class="bar">
+        <div class="barFill" id="barFill"></div>
+      </div>
+      <p class="muted" id="barText">Loading…</p>
+    </div>
+  </section>
+
+  <!-- ============ SCREEN: GATE ============ -->
+  <section class="screen" id="sGate">
+    <div class="card hero">
+      <div class="badge">🔒 Unlock</div>
+      <h2 class="h2">Okay <span id="nameGate">Siru</span>… one small lock 😌</h2>
+
+      <label class="label">Write the first date we met:</label>
+      <input class="input" id="gateInput" placeholder="DD/MM/YYYY" />
+      <button class="btn primary wide" id="gateBtn">Unlock 🔓</button>
+
+      <p class="small" id="gateMsg"></p>
+      <p class="small muted">Hint: Type it in <b>DD/MM/YYYY</b> format (example: 05/12/2023)</p>
+    </div>
+  </section>
+
+  <!-- ============ SCREEN: CAKE (tap to start music + blow candles) ============ -->
+  <section class="screen" id="sCake">
+    <div class="card hero">
+      <div class="badge">🎂 Birthday ritual</div>
+      <h2 class="h2">Happy Birthday <span id="nameCake">Siru</span> 🌙</h2>
+      <p class="muted">Tap the cake to begin 🎶</p>
+
+      <div class="cakeStage">
+        <button class="cakeBtn" id="cakeBtn" aria-label="Tap the cake">
+          <!-- Cake SVG -->
+          <svg class="cakeSvg" viewBox="0 0 520 360" aria-hidden="true">
+            <ellipse cx="260" cy="320" rx="190" ry="26" fill="rgba(255,255,255,0.12)"/>
+            <ellipse cx="260" cy="320" rx="160" ry="18" fill="rgba(255,255,255,0.07)"/>
+
+            <path d="M120 140 Q260 80 400 140 L420 290 Q260 330 100 290 Z"
+                  fill="rgba(255,210,235,0.35)" stroke="rgba(255,255,255,0.14)" stroke-width="3"/>
+
+            <path d="M120 140 Q160 110 200 130 Q240 150 280 125 Q320 100 360 135 Q390 160 400 140
+                     Q260 90 120 140 Z"
+                  fill="rgba(255,150,210,0.35)" stroke="rgba(255,255,255,0.14)" stroke-width="3"/>
+
+            <path d="M135 165 Q150 195 160 165 Q170 200 185 165 Q200 205 215 165
+                     Q230 195 245 165 Q260 205 275 165 Q290 195 305 165
+                     Q320 210 335 165 Q350 195 365 165 Q380 200 395 165"
+                  fill="none" stroke="rgba(255,170,220,0.55)" stroke-width="10" stroke-linecap="round"/>
+
+            <g id="candles">
+              <rect x="210" y="86" width="18" height="55" rx="8" fill="rgba(255,255,255,0.35)"/>
+              <rect x="251" y="78" width="18" height="63" rx="8" fill="rgba(255,255,255,0.28)"/>
+              <rect x="292" y="88" width="18" height="53" rx="8" fill="rgba(255,255,255,0.32)"/>
+              <path class="flame" d="M219 78 C210 92 214 102 219 108 C224 102 228 92 219 78Z" fill="rgba(255,200,120,0.75)"/>
+              <path class="flame" d="M260 70 C251 84 255 96 260 102 C265 96 269 84 260 70Z" fill="rgba(255,200,120,0.75)"/>
+              <path class="flame" d="M301 80 C292 94 296 104 301 110 C306 104 310 94 301 80Z" fill="rgba(255,200,120,0.75)"/>
+            </g>
+          </svg>
+
+          <span class="tapDot" id="dot"></span>
+        </button>
+      </div>
+
+      <p class="lead" id="cakeHint">Tap the cake once to start music 🎶</p>
+      <p class="small" id="cakeState">Waiting…</p>
+
+      <div class="miniControls">
+        <button class="btn ghost" id="musicPlay">Play 🎶</button>
+        <button class="btn ghost" id="musicPause">Pause</button>
+        <span class="muted" id="musicMini"></span>
+      </div>
+
+      <button class="btn primary wide" id="cakeNext" disabled>Okay… I made my wish 🎂 →</button>
+    </div>
+  </section>
+
+  <!-- ============ SCREEN: CAKE CUT + FIRST CAKE QUESTION ============ -->
+  <section class="screen" id="sCut">
+    <div class="card hero">
+      <div class="badge">🍰 Cake time</div>
+      <h2 class="h2">Now cut the cake, birthday girl 😌</h2>
+      <p class="muted">Tap the knife to cut ✨</p>
+
+      <div class="cutWrap">
+        <div class="cakeArt" id="cakeArt">
+          <svg class="cakeSvg" viewBox="0 0 520 360" aria-hidden="true">
+            <ellipse cx="260" cy="320" rx="190" ry="26" fill="rgba(255,255,255,0.12)"/>
+            <ellipse cx="260" cy="320" rx="160" ry="18" fill="rgba(255,255,255,0.07)"/>
+
+            <path d="M120 140 Q260 80 400 140 L420 290 Q260 330 100 290 Z"
+                  fill="rgba(255,210,235,0.35)" stroke="rgba(255,255,255,0.14)" stroke-width="3"/>
+
+            <path d="M120 140 Q160 110 200 130 Q240 150 280 125 Q320 100 360 135 Q390 160 400 140
+                     Q260 90 120 140 Z"
+                  fill="rgba(255,150,210,0.35)" stroke="rgba(255,255,255,0.14)" stroke-width="3"/>
+
+            <path d="M135 165 Q150 195 160 165 Q170 200 185 165 Q200 205 215 165
+                     Q230 195 245 165 Q260 205 275 165 Q290 195 305 165
+                     Q320 210 335 165 Q350 195 365 165 Q380 200 395 165"
+                  fill="none" stroke="rgba(255,170,220,0.55)" stroke-width="10" stroke-linecap="round"/>
+
+            <!-- slice overlay (hidden until cut) -->
+            <g id="sliceGroup" class="sliceGroup">
+              <path d="M318 138 Q260 110 200 138 L212 286 Q260 308 306 286 Z"
+                    fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.18)" stroke-width="2"/>
+              <path d="M318 138 Q260 100 200 138"
+                    fill="none" stroke="rgba(255,170,220,0.55)" stroke-width="10" stroke-linecap="round"/>
+            </g>
+
+            <!-- cut line shimmer -->
+            <path id="cutLine" d="M300 140 L320 290" stroke="rgba(255,255,255,0.0)" stroke-width="7" stroke-linecap="round"/>
+          </svg>
+
+          <button class="knifeBtn" id="knifeBtn" aria-label="Cut the cake">🔪</button>
         </div>
       </div>
-    </section>
 
-    <!-- WISH + CAKE -->
-    <section class="panel" id="stepWish">
-      <div class="card">
-        <h1 class="big-title">Happy Birthday, <span class="gradient-text" id="nameWish">Siru</span> 🎂</h1>
-        <p class="muted">
-          Before anything… make a wish. Don’t tell me what it is. Just trust me.
+      <div class="qaBox" id="qaBox">
+        <p class="lead" style="margin:0 0 10px 0;">
+          <b>Kaslai dine honi first cake?</b> 😌
         </p>
 
-        <div class="cake-area">
-          <p class="small muted" id="wishHint">Tap the cake to begin 🎶</p>
-
-          <button class="cake-btn" id="cakeBtn" aria-label="Birthday cake">
-            <svg class="cake-svg" viewBox="0 0 520 360" role="img" aria-label="Cake">
-              <!-- plate shadow -->
-              <ellipse cx="260" cy="322" rx="175" ry="18" class="plate-shadow"/>
-
-              <!-- cake bottom -->
-              <path d="M110 195 Q260 265 410 195 L410 285 Q260 325 110 285 Z" class="cake-btm"/>
-              <!-- cake middle -->
-              <path d="M140 142 Q260 195 380 142 L380 215 Q260 265 140 215 Z" class="cake-mid"/>
-              <!-- cake top -->
-              <path d="M170 105 Q260 140 350 105 L350 165 Q260 205 170 165 Z" class="cake-top"/>
-
-              <!-- frosting drips -->
-              <path d="M170 118
-                       Q190 138 210 128
-                       Q225 152 245 130
-                       Q260 156 275 130
-                       Q292 150 310 130
-                       Q330 142 350 118
-                       L350 140
-                       Q260 188 170 140 Z" class="frost"/>
-
-              <!-- sprinkles -->
-              <g class="sprinkles">
-                <circle cx="215" cy="140" r="3"/>
-                <circle cx="245" cy="160" r="3"/>
-                <circle cx="275" cy="155" r="3"/>
-                <circle cx="305" cy="140" r="3"/>
-                <circle cx="260" cy="142" r="3"/>
-                <circle cx="235" cy="145" r="3"/>
-                <circle cx="285" cy="150" r="3"/>
-              </g>
-
-              <!-- candles -->
-              <g id="candles" class="candles">
-                <g transform="translate(205,58)">
-                  <rect x="0" y="0" width="16" height="55" rx="7" class="candle"/>
-                  <path d="M8 -12 C2 -2 3 6 8 12 C13 6 14 -2 8 -12Z" class="flame"/>
-                </g>
-                <g transform="translate(252,50)">
-                  <rect x="0" y="0" width="16" height="63" rx="7" class="candle"/>
-                  <path d="M8 -12 C2 -2 3 6 8 12 C13 6 14 -2 8 -12Z" class="flame"/>
-                </g>
-                <g transform="translate(299,58)">
-                  <rect x="0" y="0" width="16" height="55" rx="7" class="candle"/>
-                  <path d="M8 -12 C2 -2 3 6 8 12 C13 6 14 -2 8 -12Z" class="flame"/>
-                </g>
-              </g>
-
-              <!-- cake label -->
-              <text x="260" y="348" text-anchor="middle" class="cake-text">Tap the cake 🍰</text>
-            </svg>
-          </button>
-
-          <div class="status-line">
-            <span class="status-dot" id="dot"></span>
-            <span id="cakeState" class="small muted">Waiting…</span>
-          </div>
+        <div class="grid2" id="cakeChoiceBtns">
+          <button class="btn ghost" id="cakeToMe">Malai 😌</button>
+          <button class="btn ghost" id="cakeToOthers">Arulai 🙄</button>
         </div>
 
-        <div class="actions single">
-          <button class="primary big" id="toSongBtn" disabled>Continue →</button>
+        <p class="lead" id="cutReply" style="margin-top:12px;"></p>
+
+        <button class="btn primary wide" id="cutJk" style="display:none; margin-top:10px;">
+          Nai nai jiskeko ho… you know my habit, Yabby 😌
+        </button>
+
+        <button class="btn primary wide" id="cutNext" disabled style="margin-top:10px; display:none;">
+          Okay… continue 🌙 →
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SCREEN: PAUSE ============ -->
+  <section class="screen" id="sPause">
+    <div class="card hero">
+      <div class="badge">⏳ Small pause</div>
+      <h2 class="h2">Wait… don’t click anything yet 😌</h2>
+
+      <div class="count" id="pauseCount">10</div>
+      <p class="lead" id="pauseText"></p>
+
+      <button class="btn primary wide" id="pauseNext" disabled>I’m ready 🌙 →</button>
+    </div>
+  </section>
+
+  <!-- ============ SCREEN: FIGHT MESSAGE ============ -->
+  <section class="screen" id="sFight">
+    <div class="card hero">
+      <div class="badge">🫶 Something real</div>
+      <h2 class="h2">Just one real thing…</h2>
+
+      <div class="quote">
+        <p class="lead typed" id="fightTyped"></p>
+      </div>
+
+      <div class="grid2">
+        <button class="btn ghost" id="fightSkip">Skip typing</button>
+        <button class="btn primary" id="fightNext" disabled>Continue 🤍 →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SCREEN: APOLOGY (Idea 5) ============ -->
+  <section class="screen" id="sApology">
+    <div class="card">
+      <div class="badge">🕊️ One small thing</div>
+      <h2 class="h2">Just quietly…</h2>
+      <p class="muted">No drama. Just truth 😌</p>
+
+      <div class="quote">
+        <p id="apologyTyped" class="lead"></p>
+      </div>
+
+      <div class="grid2" style="margin-top:14px;">
+        <button class="btn ghost" id="apologySkip">Skip typing</button>
+        <button class="btn primary" id="apologyNext" disabled>I know 🤍</button>
+      </div>
+
+      <p class="small muted">Birthday reminder: I’m grateful you were born 🎂</p>
+    </div>
+  </section>
+
+  <!-- ============ SCREEN: CHOOSE EACH OTHER ============ -->
+  <section class="screen" id="sChoose">
+    <div class="card hero">
+      <div class="badge">🤍 One choice</div>
+      <h2 class="h2">On your birthday… I just want to ask you one thing 😌</h2>
+
+      <div class="grid2">
+        <button class="btn ghost" id="giveUpBtn">Let’s give up 😐</button>
+        <button class="btn primary" id="chooseBtn">Let’s choose each other 🤍</button>
+      </div>
+
+      <p class="lead" id="chooseMsg"></p>
+    </div>
+  </section>
+
+  <!-- ============ SCREEN: LOVE LETTER ============ -->
+  <section class="screen" id="sLetter">
+    <div class="card hero">
+      <div class="badge">💌 Love letter</div>
+      <h2 class="h2">Read slowly…</h2>
+
+      <div class="quote">
+        <p class="lead typed" id="letterTyped"></p>
+        <p class="sig" id="letterSig" style="display:none;"></p>
+      </div>
+
+      <div class="grid2">
+        <button class="btn ghost" id="letterSkip">Skip typing</button>
+        <button class="btn primary" id="letterNext" disabled>Continue 🌙 →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SCREEN: MEMORIES ============ -->
+  <section class="screen" id="sMem">
+    <div class="card hero">
+      <div class="badge">📸 Memories</div>
+      <h2 class="h2" id="memTitle">On your birthday…</h2>
+      <p class="lead" id="memPrompt"></p>
+
+      <div class="grid3" id="memOptions"></div>
+
+      <p class="lead" id="memReply"></p>
+
+      <div class="memFrame" id="memFrame" style="display:none;">
+        <div class="memPhoto" id="memPhoto1"></div>
+        <div class="memPhoto" id="memPhoto2"></div>
+      </div>
+      <p class="muted" id="memCap"></p>
+
+      <div class="grid3" style="margin-top:12px;">
+        <button class="btn ghost" id="memPrev">Back</button>
+        <button class="btn ghost" id="memNext" disabled>Next memory 🌸</button>
+        <button class="btn primary" id="memFinal" style="display:none;">One last thing… 🌙</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SCREEN: ENDING CHOICE (Idea 7) ============ -->
+  <section class="screen" id="sEnding">
+    <div class="card hero">
+      <div class="badge">🌙 Your ending</div>
+      <h2 class="h2">Since it’s your birthday… how do you want to end this?</h2>
+      <p class="muted">Choose the vibe 😌</p>
+
+      <div class="grid3">
+        <button class="btn ghost" id="endSoft">Soft & emotional 🤍</button>
+        <button class="btn ghost" id="endFunny">Funny & cute 😄</button>
+        <button class="btn ghost" id="endHopeful">Hopeful & future 🌱</button>
+      </div>
+
+      <div class="typebox" style="margin-top:14px;">
+        <h3 class="h3" id="endingTitle">Choose your ending 🌙</h3>
+        <p class="lead" id="endingText"></p>
+      </div>
+
+      <button class="btn primary wide" id="endingNext" disabled>Go to final surprise →</button>
+    </div>
+  </section>
+
+  <!-- ============ SCREEN: FINAL ============ -->
+  <section class="screen" id="sFinal">
+    <div class="card hero finalCard">
+      <canvas id="confetti"></canvas>
+
+      <div class="badge">🎉 Final</div>
+      <h2 class="h2">Happy Birthday <span id="nameFinal">Siru</span> 🌙</h2>
+
+      <button class="btn primary wide" id="finalBtn">What?</button>
+
+      <div class="finalBox" id="finalBox" style="display:none;">
+        <p class="lead">
+          Happy Birthday, Siru 🌙<br/><br/>
+          I’m glad the world got you.<br/><br/>
+          And I’m even more glad<br/>
+          I get to love you 🤍
+        </p>
+
+        <p class="muted">If you smiled even a little… screenshot and send me 😌</p>
+
+        <div class="grid2">
+          <button class="btn ghost" id="musicToggle">Pause Music</button>
+          <button class="btn ghost" id="restart">Restart</button>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- SONG / CONTROLS -->
-    <section class="panel" id="stepSong">
-      <div class="card">
-        <h2 class="title">Close your eyes for 3 seconds…</h2>
-        <p class="muted">I’m right here 😌</p>
-
-        <div class="countdown" id="countdown">3</div>
-
-        <div class="music-box">
-          <button class="primary big" id="playBtn">Play / Resume 🎶</button>
-
-          <div class="two-btn">
-            <button class="secondary big" id="pauseBtn" disabled>Pause</button>
-            <button class="secondary big" id="replayBtn">Replay ⟲</button>
-          </div>
-
-          <div class="two-btn">
-            <button class="secondary big" id="muteBtn">Mute 🔇</button>
-            <button class="primary big" id="nextToTeaseBtn">Next →</button>
-          </div>
-
-          <p class="small muted" id="musicStatus">Music: waiting</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- TEASE -->
-    <section class="panel" id="stepTease">
-      <div class="card">
-        <h2 class="title">There are so many things I want to say…</h2>
-        <p class="muted">But one of them matters the most.</p>
-
-        <button class="primary big" id="tellMeBtn">Tell me… 💬</button>
-        <p class="small muted">(Go slowly 😌)</p>
-      </div>
-    </section>
-
-    <!-- LETTER -->
-    <section class="panel" id="stepLetter">
-      <div class="card">
-        <h2 class="title">My Love Letter 💌</h2>
-        <p class="muted">Read slowly… it’s from my heart.</p>
-
-        <div class="letter" id="letterBox">
-          <p id="letterText"></p>
-          <div class="signature" id="letterSig" style="display:none;">— Yours always</div>
-        </div>
-
-        <div class="actions">
-          <button class="secondary" id="skipLetterBtn">Skip typing</button>
-          <button class="primary" id="toMemoriesBtn" disabled>Next →</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- MEMORIES -->
-    <section class="panel" id="stepMemories">
-      <div class="card">
-        <h2 class="title">Memories 📸</h2>
-        <p class="muted">One by one… because each one matters.</p>
-
-        <div class="memory-frame">
-          <div class="memory-photo" id="memoryPhoto"></div>
-          <div class="memory-caption" id="memoryCaption">Us ✨</div>
-        </div>
-
-        <div class="actions">
-          <button class="secondary" id="prevMemBtn">← Previous</button>
-          <button class="primary" id="nextMemBtn">Next memory →</button>
-        </div>
-
-        <div class="actions single">
-          <button class="primary big" id="toFinalBtn" style="display:none;">Go to the last surprise →</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- FINAL -->
-    <section class="panel" id="stepFinal">
-      <div class="card final-card">
-        <h2 class="title">That’s all…</h2>
-        <p class="muted">But I want you to remember one thing.</p>
-
-        <button class="primary big" id="whatBtn">What?</button>
-
-        <div class="final-hidden" id="finalMsg">
-          <h3>Happy Birthday, <span class="gradient-text" id="nameFinal">Siru</span> 💖</h3>
-          <p>
-            No matter how much we fight, no matter what happens…
-            I never want to lose you.
-          </p>
-          <p class="muted small">(Now screenshot this and send me 😄)</p>
-        </div>
-
-        <canvas id="confetti"></canvas>
-
-        <div class="actions">
-          <button class="secondary" id="restartBtn">Restart 🔁</button>
-          <button class="secondary" id="stopHeartsBtn">Stop Hearts</button>
-        </div>
-      </div>
-    </section>
-
-    <footer class="footer">Made with ❤️ by you</footer>
-  </main>
-
-  <audio id="bgMusic" src="music/song.mp3" preload="auto" loop></audio>
-</div>
-
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
