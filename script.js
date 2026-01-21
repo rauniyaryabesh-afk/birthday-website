@@ -1,14 +1,11 @@
 /* ============================
-   FULL script.js (ALL additions included)
+   FULL script.js (Cute + pleasing UI)
    ============================ */
 
 // ====== CUSTOMIZE HERE ======
 const GF_NAME = "Siru";
 const YOUR_NAME = "Yabby";
-const TOP_NAME_TEXT = "Siru";
-
-// ✅ Unlock answer: first date you met (DD/MM/YYYY)
-const SECRET_ANSWER = "21/09/2025"; // <-- CHANGE THIS to your real date
+const SECRET_ANSWER = "21/09/2025"; // <-- CHANGE to your real date (DD/MM/YYYY)
 
 // Music
 const MUSIC_VOLUME = 0.40;
@@ -16,29 +13,32 @@ const MUSIC_VOLUME = 0.40;
 // Typing speed (bigger = slower)
 const TYPE_SPEED_WISH = 28;
 const TYPE_SPEED_FIGHT = 34;
+const TYPE_SPEED_APOLOGY = 30;
 const TYPE_SPEED_LETTER = 30;
 
 // ====== TEXT CONTENT ======
 const WISH_FIRST_TEXT =
-`It’s me… yours ${YOUR_NAME} 😌
+`Hi Siru, what’s up? 😌
+It’s me… yours ${YOUR_NAME} 🤍
 
 It’s your birthday baby 🎂
 Happy Birthday mero Siru…
-I love you a lottttt 🤍
+I love you a lottttt 💗
 
-Today is your day.
+Today is your day mero Siru.
 Everything here is just for you.
 
 Under the same moon…
+I am far
+BUt
 I’m still with you. 🌙`;
 
 const PAUSE_AFTER_TEXT =
-`This is the pause I take sometimes…
+`This is the silence moment in my everyday life..jaha sadhai din ma ek na ekchoti yo thought aaucha nai...
 
-Not because I don’t care.
+How lucky I am to have you bhanera...
 
-But because I care too much —
-and I don’t want my words to hurt you.`;
+I am really really lucky to have you in my life mero Siru..`;
 
 const FIGHT_TEXT =
 `When we fight sometimes…
@@ -48,12 +48,12 @@ We say things we don’t fully mean.
 We get hurt.
 And sometimes… we don’t talk for a while.
 
-But even in those moments —
+But even in those moments
 my heart never walks away from you.
 
 So if I ever go quiet,
 or if things feel distant for a moment…
-please remember —
+please remember
 I’m not giving up. I’m just trying to hold us together.`;
 
 const APOLOGY_TEXT =
@@ -62,13 +62,17 @@ quietly 😌
 
 I know I’m not perfect.
 
-I’ve hurt you sometimes —
+I’ve hurt you sometimes...sometimes bhanda ni dherei..But
 not because I didn’t care,
-but because I didn’t always know
-how to express myself properly.
+I do care about you alot...ani sabai hurtings unintentionally ho
+But still hurt is hurt and I am sorry bebu...
+
+I love you dhereeeeiiiiiii
+
+AND
 
 On your birthday,
-I just want you to know one thing —
+I just want you to know one thing
 I’m trying to be better for you.
 
 Not because you asked me to…
@@ -78,58 +82,60 @@ const LETTER_TEXT =
 `Hey ${GF_NAME},
 
 Happy birthday my love.
-I wish I was there with you today… but until that day comes, this website is my hug for you.
+I wish I was there with you today…
+but until that day comes...
+this website is my hug for you.
 
-Sometimes we fight, sometimes we misunderstand…
+Sometimes we fight....sometimes we misunderstand…
 but I never want to lose you.
 
 I’m proud of you. I miss you.
 And I love you endlessly 🤍
 
-— Yours always,
+Yours always,
 ${YOUR_NAME}`;
 
 // Memories: Q&A then 2-photo collage
 const MEM_STEPS = [
   {
-    title: "On your birthday, I thought about… us 💗",
+    title: "On your birthday… I thought about us 💗",
     prompt: "Where do we belong?",
-    options: ["Together 😌", "Far away 🥲", "In my heart 🤍"],
+    options: ["Together 😌", "In my heart 🤍", "Everywhere 🌙"],
     replies: {
-      "Together 😌": "Exactly. Even if we’re far, it’s still ‘us’ 😌💖",
-      "Far away 🥲": "Distance is real… but we are more real 😌",
-      "In my heart 🤍": "Always. You live there peacefully 🤍"
+      "Together 😌": "Exactly 😌💖 even from far… it’s still ‘us’.",
+      "In my heart 🤍": "Always… you live there peacefully 🤍",
+      "Everywhere 🌙": "Even the moon knows about us 😭💗"
     },
     photos: ["photos/us1.jpg", "photos/us2.jpg"],
     caption: "Us 💗"
   },
   {
-    title: "On your birthday, I remembered… your smile ✨",
+    title: "On your birthday… I remembered your smile ✨",
     prompt: "What do I miss the most?",
-    options: ["My smile 😏", "Your voice 🫶", "Everything 😌"],
+    options: ["Your smile 😌", "Your voice 🫶", "Everything 😭"],
     replies: {
-      "My smile 😏": "Yes baby… your smile fixes my mood instantly 😭💗",
+      "Your smile 😌": "Yes baby… your smile fixes my mood instantly 😭💗",
       "Your voice 🫶": "Your voice calms me… even from far 😌",
-      "Everything 😌": "True… I miss everything about you 🤍"
+      "Everything 😭": "True… I miss everything about you 🤍"
     },
     photos: ["photos/smile1.jpg", "photos/smile2.jpg"],
     caption: "Your smile ✨"
   },
   {
-    title: "On your birthday, I imagined… our vibe 🌙",
+    title: "On your birthday… I imagined our future 🌱",
     prompt: "What are we?",
-    options: ["A team 🤝", "A mess 😂", "A forever thing 😌"],
+    options: ["A team 🤝", "My forever 😌", "My home 🏡"],
     replies: {
       "A team 🤝": "Always a team… even when we argue 😌",
-      "A mess 😂": "We are a mess… but my favorite mess 😭💖",
-      "A forever thing 😌": "That’s what I want… forever 😌🤍"
+      "My forever 😌": "That’s what I want… forever 😌🤍",
+      "My home 🏡": "You feel like home to me 🥺🤍"
     },
     photos: ["photos/vibe1.jpg", "photos/vibe2.jpg"],
-    caption: "Forever vibe 🌸"
+    caption: " vibes 🌸"
   }
 ];
 
-// Choose Ending (Idea 7)
+// Choose Ending
 const ENDINGS = {
   soft: {
     title: "Soft & Emotional 🤍",
@@ -148,9 +154,8 @@ Happy Birthday, ${GF_NAME}.`
 `Okay okay 😄
 Enough emotions for today.
 
-It’s your birthday —
-you’re supposed to smile, not cry 😌
-
+It’s your birthday and
+you’re supposed to smile not cry...hehe 😌...
 Go eat cake now 🎂
 
 Happy Birthday, my favorite person.`
@@ -161,12 +166,12 @@ Happy Birthday, my favorite person.`
 `This birthday is special…
 but it’s not the last one.
 
-There are more moments,
-more memories,
-and more birthdays waiting for us.
+There are more moments....
+more memories....
+and more birthdays waiting for us...
 
-I’m excited for what’s ahead —
-with you 😌
+I’m excited for what’s ahead
+with you.. 😌
 
 Happy Birthday, ${GF_NAME}.`
   }
@@ -176,6 +181,7 @@ Happy Birthday, ${GF_NAME}.`
 // Helpers
 // ======================
 const $ = (id) => document.getElementById(id);
+function sleep(ms){ return new Promise(r => setTimeout(r, ms)); }
 
 function show(id){
   document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
@@ -183,7 +189,19 @@ function show(id){
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-function sleep(ms){ return new Promise(r => setTimeout(r, ms)); }
+function resetReply(el){
+  if (!el) return;
+  el.classList.remove("show");
+  el.textContent = "";
+}
+
+async function gentleReply(el, text, delay=280){
+  if (!el) return;
+  resetReply(el);
+  await sleep(delay);
+  el.textContent = text;
+  el.classList.add("show");
+}
 
 async function typeText(el, text, speed=28){
   el.textContent = "";
@@ -215,8 +233,8 @@ function spawnHeart(){
 }
 function startHearts(){
   if (!heartTimer){
-    heartTimer = setInterval(spawnHeart, 480);
-    for(let k=0;k<8;k++) setTimeout(spawnHeart, k*120);
+    heartTimer = setInterval(spawnHeart, 520);
+    for(let k=0;k<8;k++) setTimeout(spawnHeart, k*140);
   }
 }
 startHearts();
@@ -238,7 +256,7 @@ async function startMusic(){
     await music.play();
     setMusicMini("Music: playing 🎶 (looping)");
   } catch {
-    setMusicMini("Music: tap again if needed (phone rule)");
+    setMusicMini("Music: tap again (phone rule) 😌");
   }
 }
 function pauseMusic(){
@@ -252,13 +270,13 @@ $("musicPause").addEventListener("click", pauseMusic);
 // ======================
 // Set names in UI
 // ======================
-$("nameTop").textContent = TOP_NAME_TEXT;
+$("nameTop").textContent = GF_NAME;
 $("nameGate").textContent = GF_NAME;
 $("nameCake").textContent = GF_NAME;
 $("nameFinal").textContent = GF_NAME;
 
 // ======================
-// Init: Screen 1 typing
+// Start: typing
 // ======================
 (async function init(){
   await typeText($("wishFirstTyped"), WISH_FIRST_TEXT, TYPE_SPEED_WISH);
@@ -267,7 +285,7 @@ $("nameFinal").textContent = GF_NAME;
 $("wishFirstNext").addEventListener("click", () => show("sWanna"));
 
 // ======================
-// Wanna screen
+// Wanna + No path
 // ======================
 $("wannaYes").addEventListener("click", () => show("sMood"));
 $("wannaNo").addEventListener("click", () => show("sNope1"));
@@ -277,45 +295,66 @@ $("nopeMore").addEventListener("click", () => show("sNope2"));
 $("nopeBack2").addEventListener("click", () => show("sMood"));
 
 // ======================
-// Mood screen
+// Mood
 // ======================
 const moodNext = $("moodNext");
-function setMoodReply(text){
-  $("moodReply").textContent = text;
+resetReply($("moodReply"));
+
+async function setMood(text){
+  await gentleReply($("moodReply"), text, 260);
+  await sleep(350);
   moodNext.disabled = false;
 }
-$("mHappy").addEventListener("click", () => setMoodReply("Awww good 😌💖 Then this will make your birthday even better."));
-$("mTired").addEventListener("click", () => setMoodReply("Then go slowly baby 😴🤍 I’ll be gentle today… because it’s your birthday."));
-$("mAnnoyed").addEventListener("click", () => setMoodReply("I had a feeling 😌 Come… let me fix it. Today is your day, not stress day 💗"));
-moodNext.addEventListener("click", () => show("sTrust"));
+$("mHappy").addEventListener("click", () => setMood("Awww 😌💖 then sayad yesle mero baby ko birthday jhan better banaula ki."));
+$("mTired").addEventListener("click", () => setMood("Aww baby..bistari jumm we have enough time 😴🤍 I’ll be gentle today… it’s your day."));
+$("mAnnoyed").addEventListener("click", () => setMood("Come here with me..lets hug 😌💗 today is your birthday… not stress day."));
+moodNext.addEventListener("click", () => {
+  moodNext.disabled = true;
+  show("sTrust");
+});
 
 // ======================
-// Trust screen
+// Trust
 // ======================
-$("tYes").addEventListener("click", () => {
-  $("trustMsg").textContent = "Okay… hold my hand. We go together 😌🤍";
-  $("trustNext").disabled = false;
+const trustNext = $("trustNext");
+resetReply($("trustMsg"));
+
+$("tYes").addEventListener("click", async () => {
+  await gentleReply($("trustMsg"), "Okay… haat samaau 😌🤍 We will go together.", 260);
+  await sleep(380);
+  trustNext.disabled = false;
 });
-$("tDepends").addEventListener("click", () => {
-  $("trustMsg").textContent = "Fair 😏 I’ll earn it again today… birthday girl 😌💖";
-  $("trustNext").disabled = false;
+$("tDepends").addEventListener("click", async () => {
+  await gentleReply($("trustMsg"), "😏 Lala. I will earn it again today… my birthday girl 😌💖", 260);
+  await sleep(380);
+  trustNext.disabled = false;
 });
-$("trustNext").addEventListener("click", () => show("sPromise"));
+trustNext.addEventListener("click", () => {
+  trustNext.disabled = true;
+  show("sPromise");
+});
 
 // ======================
-// Promise screen
+// Promise
 // ======================
-$("pYes").addEventListener("click", () => {
-  $("promiseMsg").textContent = "Good 😌 Now go slowly… it’s your special day 🎂";
-  $("promiseNext").disabled = false;
+const promiseNext = $("promiseNext");
+resetReply($("promiseMsg"));
+
+$("pYes").addEventListener("click", async () => {
+  await gentleReply($("promiseMsg"), "😌Okay.. now lets go slowly hai baby… I made it with love for you 🎂", 280);
+  await sleep(380);
+  promiseNext.disabled = false;
 });
 $("pNo").addEventListener("click", async () => {
-  $("promiseMsg").textContent = "Aiyo Siru 😭 Just one promise baby… go slowly 😌";
+  await gentleReply($("promiseMsg"), "Naaiiii Siru 😭 just one promise baby… go slowly 😌", 260);
   await sleep(900);
-  $("promiseMsg").textContent = "Okay okay… birthday girl wins 😂 Tap ‘Continue’ now 💖";
-  $("promiseNext").disabled = false;
+  await gentleReply($("promiseMsg"), "Okay okay 😂 birthday girl wins… tap the button now 💖", 220);
+  await sleep(360);
+  promiseNext.disabled = false;
 });
-$("promiseNext").addEventListener("click", async () => {
+
+promiseNext.addEventListener("click", async () => {
+  promiseNext.disabled = true;
   show("sLoad");
   await runLoading();
   show("sGate");
@@ -344,6 +383,8 @@ async function runLoading(){
 // ======================
 // Gate: DD/MM/YYYY + auto slashes
 // ======================
+resetReply($("gateMsg"));
+
 $("gateInput").addEventListener("input", () => {
   let v = $("gateInput").value.replace(/\D/g, "").slice(0, 8);
   if (v.length >= 5) v = v.slice(0,2) + "/" + v.slice(2,4) + "/" + v.slice(4);
@@ -351,27 +392,24 @@ $("gateInput").addEventListener("input", () => {
   $("gateInput").value = v;
 });
 
-$("gateBtn").addEventListener("click", () => {
+$("gateBtn").addEventListener("click", async () => {
   const ansRaw = ($("gateInput").value || "").trim();
   const datePattern = /^\d{2}\/\d{2}\/\d{4}$/;
 
   if (!ansRaw){
-    $("gateMsg").textContent = "Please type the date 😄";
-    $("gateMsg").style.color = "var(--pink)";
+    await gentleReply($("gateMsg"), "Type the date baby...Tha chani?? I know chhaina...Aba letter ma hera jaldi 😄", 120);
     return;
   }
   if (!datePattern.test(ansRaw)){
-    $("gateMsg").textContent = "Format should be DD/MM/YYYY (example: 05/12/2023)";
-    $("gateMsg").style.color = "var(--pink)";
+    await gentleReply($("gateMsg"), "Format should be DD/MM/YYYY (example: 05/12/2023) 😌", 120);
     return;
   }
   if (ansRaw === SECRET_ANSWER){
-    $("gateMsg").textContent = "Unlocked 💖";
-    $("gateMsg").style.color = "var(--mint)";
-    setTimeout(() => show("sCake"), 600);
+    await gentleReply($("gateMsg"), "Unlocked 💖", 120);
+    await sleep(520);
+    show("sCake");
   } else {
-    $("gateMsg").textContent = "Hmm… not that date 😌 try again";
-    $("gateMsg").style.color = "var(--pink)";
+    await gentleReply($("gateMsg"), "Hmm… not that date 😌 try again", 140);
   }
 });
 
@@ -380,7 +418,7 @@ $("gateInput").addEventListener("keydown", (e) => {
 });
 
 // ======================
-// Cake logic: tap 1 starts music, tap 2 blows candles
+// Cake: tap 1 starts music, tap 2 blows candles
 // ======================
 const candles = $("candles");
 const dot = $("dot");
@@ -399,7 +437,7 @@ $("cakeBtn").addEventListener("click", async () => {
     await startMusic();
     setDot("on");
 
-    $("cakeHint").textContent = "Blow the candle and make a wish… 😌🕯️";
+    await gentleReply($("cakeHint"), "Okay 😌 fuuu garnus candle lai ani make a wish… 🕯️", 120);
     $("cakeState").textContent = "Tap again to blow the candles ✨";
 
     candlesOff = false;
@@ -413,72 +451,80 @@ $("cakeBtn").addEventListener("click", async () => {
     candles.classList.add("off");
     setDot("done");
 
-    $("cakeState").textContent = "✨ Wish made… keep it secret 😌";
-    $("cakeHint").textContent = "Candles are OFF… now let’s cut cake 🍰";
+    await gentleReply($("cakeHint"), "Awww bebu 😭💗 wish made… keep it secret 😌", 120);
+    $("cakeState").textContent = "Candles are OFF… now cake time 🍰";
 
     $("cakeNext").disabled = true;
-    await sleep(900);
+    await sleep(700);
     $("cakeNext").disabled = false;
     return;
   }
 });
 
 // ======================
-// NEW: Cake cutting + first cake question screen
+// Cake Cut screen
 // ======================
 let cutDone = false;
 let pickedMe = false;
-
 const sliceGroup = $("sliceGroup");
 const cutLine = $("cutLine");
 
-function resetCakeChoice(){
+function resetCutUI(){
+  cutDone = false;
   pickedMe = false;
-  $("cutReply").textContent = "";
+  if (sliceGroup) sliceGroup.classList.remove("cut");
+  resetReply($("cutReply"));
   $("cutJk").style.display = "none";
   $("cutNext").style.display = "none";
   $("cutNext").disabled = true;
 }
 
-function allowContinueIfReady(){
+function allowCutContinue(){
   if (cutDone && pickedMe){
     $("cutNext").style.display = "block";
     $("cutNext").disabled = false;
   }
 }
 
+$("cakeNext").addEventListener("click", () => {
+  resetCutUI();
+  show("sCut");
+});
+
 $("knifeBtn").addEventListener("click", () => {
   cutDone = true;
-
   if (sliceGroup) sliceGroup.classList.add("cut");
   if (cutLine){
     cutLine.classList.add("cutShine");
     setTimeout(()=>cutLine.classList.remove("cutShine"), 700);
   }
-  allowContinueIfReady();
+  allowCutContinue();
 });
 
-$("cakeToMe").addEventListener("click", () => {
+$("cakeToMe").addEventListener("click", async () => {
   pickedMe = true;
-  $("cutReply").style.color = "var(--mint)";
-  $("cutReply").textContent = "YEAHHHH 😭💗 First cake malaiiii 😌";
+  await gentleReply($("cutReply"), "YEAHHHH 😭💗 first cake malaiiii..yumyum 😌", 180);
   $("cutJk").style.display = "none";
-  allowContinueIfReady();
+  await sleep(250);
+  allowCutContinue();
 });
 
-$("cakeToOthers").addEventListener("click", () => {
+$("cakeToOthers").addEventListener("click", async () => {
   pickedMe = false;
-  $("cutReply").style.color = "var(--pink)";
-  $("cutReply").textContent = "Hurt gareu malai 😤";
+  await gentleReply($("cutReply"), "Nadeko malai??? what??? 😤", 180);
+  await sleep(260);
   $("cutJk").style.display = "block";
   $("cutNext").style.display = "none";
   $("cutNext").disabled = true;
 });
 
-$("cutJk").addEventListener("click", () => {
-  $("cutReply").style.color = "rgba(238,242,255,0.85)";
-  $("cutReply").textContent = "Hehe 😌 now choose properly…";
-  setTimeout(() => resetCakeChoice(), 450);
+$("cutJk").addEventListener("click", async () => {
+  await gentleReply($("cutReply"), "Hehe 😌 now choose properly…", 120);
+  await sleep(380);
+  // reset only the choice part (keep slice if already cut)
+  pickedMe = false;
+  resetReply($("cutReply"));
+  $("cutJk").style.display = "none";
 });
 
 $("cutNext").addEventListener("click", async () => {
@@ -486,27 +532,20 @@ $("cutNext").addEventListener("click", async () => {
   await runPause();
 });
 
-$("cakeNext").addEventListener("click", () => {
-  // reset cut screen state whenever we enter
-  cutDone = false;
-  pickedMe = false;
-  if (sliceGroup) sliceGroup.classList.remove("cut");
-  resetCakeChoice();
-  show("sCut");
-});
-
 // ======================
-// Pause moment
+// Pause
 // ======================
 async function runPause(){
   $("pauseNext").disabled = true;
-  $("pauseText").textContent = "";
+  resetReply($("pauseText"));
+
   for (let i=10; i>=1; i--){
     $("pauseCount").textContent = String(i);
-    await sleep(850);
+    await sleep(820);
   }
   $("pauseCount").textContent = "🌙";
-  $("pauseText").textContent = PAUSE_AFTER_TEXT;
+  await gentleReply($("pauseText"), PAUSE_AFTER_TEXT, 220);
+  await sleep(420);
   $("pauseNext").disabled = false;
 }
 
@@ -543,8 +582,7 @@ $("fightSkip").addEventListener("click", () => {
   $("fightNext").disabled = false;
 });
 
-// After fight -> apology screen
-$("fightNext").addEventListener("click", async () => {
+$("fightNext").addEventListener("click", () => {
   show("sApology");
   startApologyTyping();
 });
@@ -568,7 +606,7 @@ function startApologyTyping(){
       apologyTimer = null;
       $("apologyNext").disabled = false;
     }
-  }, 30);
+  }, TYPE_SPEED_APOLOGY);
 }
 
 $("apologySkip").addEventListener("click", () => {
@@ -579,24 +617,21 @@ $("apologySkip").addEventListener("click", () => {
 
 $("apologyNext").addEventListener("click", () => {
   show("sChoose");
-  $("chooseMsg").textContent = "";
+  resetReply($("chooseMsg"));
 });
 
 // ======================
 // Choose each other
 // ======================
 $("giveUpBtn").addEventListener("click", async () => {
-  $("chooseMsg").style.color = "rgba(238,242,255,0.85)";
-  $("chooseMsg").textContent = "I know it gets hard… but I’m still here 😌";
-  await sleep(900);
-  $("chooseMsg").style.color = "var(--mint)";
-  $("chooseMsg").textContent = "Come… choose us 💖";
+  await gentleReply($("chooseMsg"), "Nooooo 😭 but okay you can be mad. But I’m still here sadhaiiii 😌🤍", 220);
+  await sleep(820);
+  await gentleReply($("chooseMsg"), "Come… choose us baby 💖", 220);
 });
 
 $("chooseBtn").addEventListener("click", async () => {
-  $("chooseMsg").style.color = "var(--mint)";
-  $("chooseMsg").textContent = "Thank you for choosing us. I always will. 💖";
-  await sleep(850);
+  await gentleReply($("chooseMsg"), "Thank you 😭💗 I choose you too. Always.", 200);
+  await sleep(700);
   show("sLetter");
   startLetterTyping();
 });
@@ -653,7 +688,8 @@ function renderMemStep(){
 
   $("memTitle").textContent = step.title;
   $("memPrompt").textContent = step.prompt;
-  $("memReply").textContent = "";
+
+  resetReply($("memReply"));
   $("memFrame").style.display = "none";
   $("memNext").disabled = true;
 
@@ -671,18 +707,19 @@ function renderMemStep(){
   $("memFinal").style.display = (memIndex === MEM_STEPS.length - 1) ? "block" : "none";
 }
 
-function chooseMemOption(opt){
+async function chooseMemOption(opt){
   if (memAnswered) return;
   memAnswered = true;
 
   const step = MEM_STEPS[memIndex];
-  $("memReply").textContent = step.replies[opt] || "😌💖";
+  await gentleReply($("memReply"), step.replies[opt] || "😌💖", 180);
 
   $("memPhoto1").style.backgroundImage = `url("${step.photos[0]}")`;
   $("memPhoto2").style.backgroundImage = `url("${step.photos[1]}")`;
   $("memCap").textContent = step.caption;
 
   $("memFrame").style.display = "grid";
+  await sleep(350);
   $("memNext").disabled = false;
 }
 
@@ -690,8 +727,11 @@ $("memNext").addEventListener("click", () => {
   if (memIndex < MEM_STEPS.length - 1){
     memIndex++;
     renderMemStep();
+  } else {
+    show("sChildhood"); // 👈 ADD THIS
   }
 });
+
 $("memPrev").addEventListener("click", () => {
   if (memIndex > 0){
     memIndex--;
@@ -699,21 +739,126 @@ $("memPrev").addEventListener("click", () => {
   }
 });
 
-// after memories -> ending choice
-$("memFinal").addEventListener("click", () => show("sEnding"));
+$("memFinal").addEventListener("click", () => {
+  showChildhood();
+});
 
 // ======================
-// Ending choice (Idea 7)
+// CHILDHOOD SCREEN: play clip from 20s to 40s
+// ======================
+const clipMusic = $("clipMusic");
+
+// Set your childhood photo path here:
+const CHILD_PHOTO = "photos/childhood.jpg"; // put your childhood photo in photos/childhood.jpg
+
+const CLIP_START = 15; // seconds
+const CLIP_END = 50;   // seconds (stop at this time)
+
+let clipWatcher = null;
+
+function fmtTime(sec){
+  const m = Math.floor(sec/60);
+  const s = Math.floor(sec%60);
+  return `${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}`;
+}
+
+async function playClip(){
+  // pause background music so it doesn't mix
+  try { music.pause(); } catch {}
+
+  // jump to start time
+  clipMusic.currentTime = CLIP_START;
+  clipMusic.volume = 0.55;
+  clipMusic.loop = false;
+
+  // start playing (mobile needs a user gesture → we call from button)
+  try{
+    await clipMusic.play();
+  } catch(e){
+    // if it fails, show hint
+    await gentleReply($("childMsg"), "Tap Play again baby 😌 (phone rule)", 150);
+    return;
+  }
+
+  // show message + enable next at end
+  $("childNext").disabled = true;
+  resetReply($("childMsg"));
+  await gentleReply($("childMsg"),
+    "You were cute then… and you’re still my favorite person now 🥺🤍",
+    180
+  );
+
+  // stop at CLIP_END
+  if (clipWatcher) clearInterval(clipWatcher);
+  clipWatcher = setInterval(() => {
+    const t = clipMusic.currentTime;
+    $("childTimer").textContent = `Clip: ${fmtTime(CLIP_START)} → ${fmtTime(CLIP_END)}  (Now: ${fmtTime(t)})`;
+
+    if (t >= CLIP_END || clipMusic.ended){
+      stopClip(true);
+    }
+  }, 150);
+}
+
+function stopClip(auto=false){
+  if (clipWatcher) { clearInterval(clipWatcher); clipWatcher = null; }
+  clipMusic.pause();
+
+  // reset timer display
+  $("childTimer").textContent = `Clip: ${fmtTime(CLIP_START)} → ${fmtTime(CLIP_END)}`;
+
+  // allow continuing
+  $("childNext").disabled = false;
+
+  // resume bg music gently (optional)
+  // If you want bg music to continue after clip ends:
+  // startMusic();
+
+  if (auto){
+    // small cute line when it ends naturally
+    gentleReply($("childMsg"),
+      "Okay 😌 that was for our school memory… now back to birthday 🎂🤍",
+      180
+    );
+  }
+}
+
+function showChildhood(){
+  // set photo
+  $("childPhoto").style.backgroundImage = `url("${CHILD_PHOTO}")`;
+
+  // reset UI
+  $("childNext").disabled = true;
+  $("childTimer").textContent = `Clip: ${fmtTime(CLIP_START)} → ${fmtTime(CLIP_END)}`;
+  resetReply($("childMsg"));
+
+  show("sChildhood");
+}
+
+// Buttons
+$("childPlay").addEventListener("click", playClip);
+$("childStop").addEventListener("click", () => stopClip(false));
+$("childNext").addEventListener("click", () => show("sEnding"));
+
+
+
+
+
+
+// ======================
+// Ending choice
 // ======================
 let selectedEndingKey = null;
 
-function setEnding(key){
+async function setEnding(key){
   selectedEndingKey = key;
   const data = ENDINGS[key];
   $("endingTitle").textContent = data.title;
-  $("endingText").textContent = data.text;
+  await gentleReply($("endingText"), data.text, 200);
+  await sleep(350);
   $("endingNext").disabled = false;
 }
+
 $("endSoft").addEventListener("click", () => setEnding("soft"));
 $("endFunny").addEventListener("click", () => setEnding("funny"));
 $("endHopeful").addEventListener("click", () => setEnding("hopeful"));
@@ -762,7 +907,7 @@ function drawConfetti(){
 
 $("finalBtn").addEventListener("click", () => {
   $("finalBtn").disabled = true;
-  $("finalBtn").textContent = "💖";
+  $("finalBtn").textContent = "😭💖";
   $("finalBox").style.display = "block";
   makeConfetti();
   drawConfetti();
@@ -781,27 +926,24 @@ $("musicToggle").addEventListener("click", async () => {
 $("restart").addEventListener("click", async () => {
   // gate
   $("gateInput").value = "";
-  $("gateMsg").textContent = "";
+  resetReply($("gateMsg"));
 
   // cake
   firstCakeTap = false;
   candlesOff = false;
   candles.classList.remove("off");
   setDot("");
-  $("cakeHint").textContent = "Tap the cake once to start music 🎶";
   $("cakeState").textContent = "Waiting…";
   $("cakeNext").disabled = true;
+  $("cakeHint").textContent = "Tap the cake once to start music 🎶";
+  $("cakeHint").classList.add("show");
 
   // cut
-  cutDone = false;
-  pickedMe = false;
-  if (sliceGroup) sliceGroup.classList.remove("cut");
-  resetCakeChoice();
-  $("cutReply").textContent = "";
+  resetCutUI();
 
   // pause
   $("pauseCount").textContent = "10";
-  $("pauseText").textContent = "";
+  resetReply($("pauseText"));
   $("pauseNext").disabled = true;
 
   // fight
@@ -813,7 +955,7 @@ $("restart").addEventListener("click", async () => {
   $("apologyNext").disabled = true;
 
   // choose
-  $("chooseMsg").textContent = "";
+  resetReply($("chooseMsg"));
 
   // letter
   $("letterTyped").textContent = "";
@@ -826,13 +968,13 @@ $("restart").addEventListener("click", async () => {
 
   // ending
   selectedEndingKey = null;
-  $("endingTitle").textContent = "Choose your ending 🌙";
-  $("endingText").textContent = "";
+  $("endingTitle").textContent = "Pick one 😌";
+  resetReply($("endingText"));
   $("endingNext").disabled = true;
 
   // final
   $("finalBtn").disabled = false;
-  $("finalBtn").textContent = "What?";
+  $("finalBtn").textContent = "What? 😶";
   $("finalBox").style.display = "none";
   confetti = [];
   resizeCanvas();

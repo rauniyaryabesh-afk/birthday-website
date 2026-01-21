@@ -1,7 +1,7 @@
 :root{
   --bg1:#070816;
   --bg2:#120A2A;
-  --card: rgba(255,255,255,0.08);
+  --card: rgba(255,255,255,0.085);
   --stroke: rgba(255,255,255,0.14);
   --text: rgba(238,242,255,0.92);
   --muted: rgba(238,242,255,0.70);
@@ -17,9 +17,9 @@ body{
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
   color: var(--text);
   background:
-    radial-gradient(900px 540px at 20% 10%, rgba(255,120,210,0.18), transparent 60%),
-    radial-gradient(900px 540px at 80% 20%, rgba(140,120,255,0.14), transparent 60%),
-    radial-gradient(800px 500px at 50% 70%, rgba(120,220,255,0.10), transparent 60%),
+    radial-gradient(900px 540px at 20% 10%, rgba(255,120,210,0.20), transparent 60%),
+    radial-gradient(900px 540px at 80% 20%, rgba(140,120,255,0.16), transparent 60%),
+    radial-gradient(800px 500px at 50% 70%, rgba(120,220,255,0.12), transparent 60%),
     linear-gradient(160deg, var(--bg1), var(--bg2));
   overflow-x:hidden;
 }
@@ -69,29 +69,29 @@ body::before{
   display:none;
   align-items:center;
   justify-content:center;
-  padding: 28px 16px;
+  padding: 30px 16px;
   position:relative;
   z-index:2;
 }
 .screen.active{ display:flex; }
 
 .card{
-  width: min(760px, 96vw);
+  width: min(780px, 96vw);
   background: var(--card);
   border: 1px solid var(--stroke);
-  border-radius: 22px;
+  border-radius: 24px;
   padding: 22px 18px;
-  box-shadow: 0 22px 80px rgba(0,0,0,0.35);
-  backdrop-filter: blur(10px);
+  box-shadow: 0 22px 90px rgba(0,0,0,0.38);
+  backdrop-filter: blur(12px);
 }
 .hero{ text-align:center; }
 
 .badge{
   display:inline-block;
-  padding: 6px 12px;
+  padding: 7px 12px;
   border-radius: 999px;
-  border: 1px solid var(--stroke);
-  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.16);
+  background: rgba(255,255,255,0.07);
   font-size: 13px;
   margin-bottom: 10px;
 }
@@ -141,6 +141,17 @@ body::before{
   font-style: italic;
 }
 
+/* reply fade-in */
+.reply{
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 420ms ease, transform 420ms ease;
+}
+.reply.show{
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* inputs */
 .label{
   display:block;
@@ -167,7 +178,7 @@ body::before{
   background: rgba(255,255,255,0.10);
   color: rgba(255,255,255,0.92);
   cursor:pointer;
-  transition: transform .12s ease, background .2s ease;
+  transition: transform .12s ease, background .2s ease, filter .2s ease;
   user-select:none;
 }
 .btn:hover{ background: rgba(255,255,255,0.14); }
@@ -178,15 +189,17 @@ body::before{
 }
 
 .btn.primary{
-  background: linear-gradient(135deg, rgba(255,93,183,0.88), rgba(160,120,255,0.62));
+  background: linear-gradient(135deg, rgba(255,93,183,0.92), rgba(160,120,255,0.70));
   border-color: rgba(255,255,255,0.18);
+  filter: drop-shadow(0 12px 18px rgba(255,93,183,0.10));
 }
-.btn.primary:hover{ background: linear-gradient(135deg, rgba(255,93,183,0.95), rgba(160,120,255,0.70)); }
+.btn.primary:hover{
+  background: linear-gradient(135deg, rgba(255,93,183,0.98), rgba(160,120,255,0.78));
+}
 
 .btn.danger.soft{
   background: rgba(255,80,120,0.18);
 }
-
 .btn.ghost{
   background: rgba(255,255,255,0.06);
 }
@@ -288,8 +301,6 @@ body::before{
   0%,100%{ transform: scale(1); opacity: .85; }
   50%{ transform: scale(1.06); opacity: 1; }
 }
-
-/* candles off */
 #candles.off .flame{
   opacity: 0;
   animation: none;
@@ -338,7 +349,6 @@ body::before{
 }
 .knifeBtn:active{ transform: scale(0.96); }
 
-/* slice moves out when cut */
 .sliceGroup{
   opacity: 0;
   transform: translateX(0) rotate(0deg);
@@ -350,8 +360,8 @@ body::before{
   transform: translateX(90px) rotate(6deg);
 }
 .cutShine{
-  stroke: rgba(255,255,255,0.75) !important;
-  filter: drop-shadow(0 0 10px rgba(255,160,220,0.45));
+  stroke: rgba(255,255,255,0.78) !important;
+  filter: drop-shadow(0 0 10px rgba(255,160,220,0.50));
   transition: stroke 250ms ease;
 }
 
@@ -363,7 +373,7 @@ body::before{
   border: 1px solid rgba(255,255,255,0.14);
 }
 
-/* pause count */
+/* pause */
 .count{
   font-size: 54px;
   font-weight: 700;
@@ -385,7 +395,7 @@ body::before{
   background-color: rgba(255,255,255,0.06);
   background-position: center;
   background-repeat: no-repeat;
-  background-size: contain; /* show full photo (no crop) */
+  background-size: contain; /* full photo visible */
   box-shadow: 0 12px 30px rgba(255, 100, 200, 0.18);
 }
 @media (max-width: 560px){
@@ -402,7 +412,7 @@ body::before{
   padding: 14px 14px;
 }
 
-/* final confetti canvas */
+/* final */
 .finalCard{ position:relative; overflow:hidden; }
 #confetti{
   position:absolute;
@@ -418,3 +428,32 @@ body::before{
   border: 1px solid rgba(255,255,255,0.12);
   background: rgba(255,255,255,0.06);
 }
+
+.childPhoto {
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+  display: block;
+  border-radius: 16px;
+}
+.childWrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
+}
+#sChildhood .card{
+  animation: fadeUp 0.8s ease forwards;
+}
+
+@keyframes fadeUp{
+  from{
+    opacity:0;
+    transform: translateY(12px);
+  }
+  to{
+    opacity:1;
+    transform: translateY(0);
+  }
+}
+
+
